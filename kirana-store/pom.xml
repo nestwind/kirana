@@ -79,6 +79,14 @@
 		    <artifactId>jquery</artifactId>
 		    <version>1.9.1</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap-table -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>bootstrap-table</artifactId>
+		    <version>1.9.1</version>
+		</dependency>
+		
 	<!-- Bootstrap and Jquery web Jars -->
 		
 	</dependencies>
