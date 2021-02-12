@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+<!-- Pagination control -->
+    <!-- Hardcoding the default page-size as 10. User can create a dropdown to select the different page-sizes. -->
+    
+    <div th:fragment="products-navigation" class="row product-navigation" style="border-radius:5px 5px 0px 0px">
+        <div th:if="${responseEntity.page['totalPages'] > 1}">
+            <div class="col-lg-2">
+                Total Pages: [[${responseEntity.page['totalPages']}]]
+            </div>
+            <div class="col-lg-2">
+            	Current Page : [[${responseEntity.page['currentPage']}]]
+            </div>
+            <!-- 
+            	<div>
+                <span th:each="i: ${#numbers.sequence(1, responseEntity.page['totalPages'])}">
+                    <a th:href="@{'/products/paginated/' + ${i} + '/10'}"
+                       th:if="${responseEntity.page['currentPage'] != i}">[[${i}]]</a>
+                    <span th:unless="${responseEntity.page['currentPage'] != i}">[[${i}]]</span>
+                </span>
+            	</div>
+             -->
+             <div class="col-lg-2">
+                <a class="btn btn-primary" th:href="@{'/products/paginated/' + ${responseEntity.page['currentPage'] - 1} + '/10'}"
+                   th:if="${responseEntity.page['currentPage'] > 1}">
+                    Prev
+                </a>
+                <!-- <span th:unless="${responseEntity.page['currentPage'] < responseEntity.page['totalPages']}">Next</span> -->
+            </div>
+            
+            <div class="col-lg-2">
+                <a class="btn btn-primary" th:href="@{'/products/paginated/' + ${responseEntity.page['currentPage'] + 1} + '/10'}"
+                   th:if="${responseEntity.page['currentPage'] < responseEntity.page['totalPages']}">
+                    Next
+                </a>
+                <!-- <span th:unless="${responseEntity.page['currentPage'] < responseEntity.page['totalPages']}">Next</span> -->
+            </div>
+            <div class="col-lg-2">
+                <a class="btn btn-primary" th:href="@{'/products/paginated/' + ${responseEntity.page['totalPages']} + '/10'}"
+                   th:if="${responseEntity.page['currentPage'] < responseEntity.page['totalPages']}">
+                    Last
+                </a>
+                <!-- <span th:unless="${responseEntity.page['currentPage'] < responseEntity.page['totalPages']}">Last</span> -->
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
